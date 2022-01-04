@@ -29,7 +29,7 @@ Ported to QMK by Stephen Peery <https://github.com/smp4488/>
 #include "matrix.h"
 #include "debounce.h"
 #include "quantum.h"
-#include "rgb_matrix_sn32f24xx.h"
+#include "sn32f24xb.h"
 
 #if defined(OPTICAL_MATRIX)
 #ifndef PRESSED_KEY_PIN_STATE
