@@ -5,7 +5,7 @@ BOARDSRC = $(CHIBIOS_CONTRIB)/os/hal/boards/SN_SN32F240B/board.c
 BOARDINC = $(CHIBIOS_CONTRIB)/os/hal/boards/SN_SN32F240B
 
 # Optimize for speed
-OPT_DEFS = -O2
+OPT = 2
 
 # Shared variables
 ALLCSRC += $(BOARDSRC)

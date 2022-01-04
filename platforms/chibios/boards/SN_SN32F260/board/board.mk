@@ -5,7 +5,7 @@ BOARDSRC = $(CHIBIOS_CONTRIB)/os/hal/boards/SN_SN32F260/board.c
 BOARDINC = $(CHIBIOS_CONTRIB)/os/hal/boards/SN_SN32F260
 
 # Optimize for size
-OPT_DEFS = -Os
+# OPT = s /set by default
 
 # Some options to reduce RAM usage
 LDFLAGS += --specs=nano.specs
