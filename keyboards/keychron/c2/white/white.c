@@ -30,7 +30,7 @@ static void mode_leds_update(void) {
     writePin(LED_MAC_PIN, mode_leds_show && !mode_leds_windows);
 }
 
-void dip_switch_update_kb(uint8_t index, bool active){
+bool dip_switch_update_kb(uint8_t index, bool active){
     if(index == 0) {
         if(active) { // Windows mode
             layer_move(WIN_BASE);
@@ -44,6 +44,7 @@ void dip_switch_update_kb(uint8_t index, bool active){
     }
 
     dip_switch_update_user(index, active);
+    return true;
 }
 
 void keyboard_pre_init_kb(void) {

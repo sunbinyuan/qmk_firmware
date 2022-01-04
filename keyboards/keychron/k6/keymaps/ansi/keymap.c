@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                }
 };
 
-void dip_switch_update_user(uint8_t index, bool active){
+bool dip_switch_update_user(uint8_t index, bool active){
     switch(index){
         case 0: // macos/windows togggle
             if(active){ //macos
@@ -70,6 +70,7 @@ void dip_switch_update_user(uint8_t index, bool active){
             }
         break;
     }
+    return true;
 }
 
 void keyboard_post_init_user(void) {

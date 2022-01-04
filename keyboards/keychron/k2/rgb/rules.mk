@@ -10,9 +10,7 @@ MCU = SN32F248BF
 #
 LTO_ENABLE = no
 BACKLIGHT_ENABLE = no
-MAGIC_ENABLE = yes
-MAGIC_KEYCODE_ENABLE = yes
-BOOTMAGIC_ENABLE = yes # Virtual DIP switch configuration
+BOOTMAGIC_ENABLE = no # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = no    # Mouse keys
 EXTRAKEY_ENABLE = yes    # Audio control and System control
 CONSOLE_ENABLE = no     # Console for debug
