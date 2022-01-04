@@ -9,7 +9,7 @@ MCU = SN32F268F
 #
 MAGIC_ENABLE = yes
 MAGIC_KEYCODE_ENABLE = yes
-BOOTMAGIC_ENABLE = full 	# Virtual DIP switch configuration
+BOOTMAGIC_ENABLE = yes 	# Virtual DIP switch configuration
 EXTRAKEY_ENABLE = yes   	# Audio control and System control
 NKRO_ENABLE = yes       	# USB Nkey Rollover
 DIP_SWITCH_ENABLE = yes

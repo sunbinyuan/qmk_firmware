@@ -1,5 +1,5 @@
 # project specific files
-SRC = ../../../drivers/sn32/matrix_sn32f24xx.c
+SRC = ../../../drivers/led/sn32/matrix_sn32f24xx.c
 SRC += config_led.c
 
 # MCU name
@@ -12,7 +12,7 @@ LTO_ENABLE = no
 BACKLIGHT_ENABLE = no
 MAGIC_ENABLE = yes
 MAGIC_KEYCODE_ENABLE = yes
-BOOTMAGIC_ENABLE = full # Virtual DIP switch configuration
+BOOTMAGIC_ENABLE = yes # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = no    # Mouse keys
 EXTRAKEY_ENABLE = yes   # Audio control and System control
 CONSOLE_ENABLE = no     # Console for debug
@@ -28,4 +28,4 @@ KEYBOARD_SHARED_EP = yes
 
 # Custom RGB matrix handling
 RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_DRIVER = SN32F248B
+RGB_MATRIX_DRIVER = SN32F24xB

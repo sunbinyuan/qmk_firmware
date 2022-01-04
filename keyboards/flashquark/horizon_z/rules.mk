@@ -1,5 +1,5 @@
 # project specific files
-SRC = ../../../drivers/sn32/matrix_sn32f24xx.c
+SRC = ../../../drivers/led/sn32/matrix_sn32f24xx.c
 SRC += led_matrix.c
 SRC += config_led.c
 
@@ -13,7 +13,7 @@ LTO_ENABLE = no
 BACKLIGHT_ENABLE = no
 MAGIC_ENABLE = yes
 MAGIC_KEYCODE_ENABLE = yes
-BOOTMAGIC_ENABLE = full # Virtual DIP switch configuration
+BOOTMAGIC_ENABLE = yes # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = no    # Mouse keys
 EXTRAKEY_ENABLE = yes    # Audio control and System control
 CONSOLE_ENABLE = no     # Console for debug
