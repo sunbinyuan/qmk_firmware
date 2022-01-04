@@ -93,6 +93,9 @@
                 "atmega328p",
                 "atmega328",
                 "attiny85",
+                "SN32F248F",
+                "SN32F248BF",
+                "SN32F268F",
                 "unknown"
             ]
         },
@@ -174,6 +177,7 @@
                 "qmk-dfu",
                 "qmk-hid",
                 "rp2040",
+                "sn32",
                 "stm32-dfu",
                 "stm32duino",
                 "tinyuf2",

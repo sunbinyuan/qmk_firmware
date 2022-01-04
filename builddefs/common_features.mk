@@ -251,6 +251,12 @@ else
         # Teensy EEPROM implementations
         OPT_DEFS += -DEEPROM_KINETIS_FLEXRAM
         SRC += eeprom_kinetis_flexram.c
+        SRC += $(PLATFORM_COMMON_DIR)/eeprom_sn32.c
+      else ifneq ($(filter $(MCU_SERIES),SN32F240B SN32F260),)
+        OPT_DEFS += -DEEPROM_DRIVER
+        COMMON_VPATH += $(DRIVER_PATH)/eeprom
+        SRC += eeprom_driver.c
+        SRC += $(PLATFORM_COMMON_DIR)/eeprom_sn32.c
       else
         # Fall back to transient, i.e. non-persistent
         OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_TRANSIENT
@@ -419,7 +425,7 @@ endif
 
 RGB_MATRIX_ENABLE ?= no
 
-VALID_RGB_MATRIX_TYPES := AW20216 IS31FL3731 IS31FL3733 IS31FL3737 IS31FL3741 IS31FL3742A IS31FL3743A IS31FL3745 IS31FL3746A CKLED2001 WS2812 custom
+VALID_RGB_MATRIX_TYPES := AW20216 IS31FL3731 IS31FL3733 IS31FL3737 IS31FL3741 IS31FL3742A IS31FL3743A IS31FL3745 IS31FL3746A CKLED2001 WS2812 SN32F24xB SN32F26x custom
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
     ifeq ($(filter $(RGB_MATRIX_DRIVER),$(VALID_RGB_MATRIX_TYPES)),)
         $(call CATASTROPHIC_ERROR,Invalid RGB_MATRIX_DRIVER,RGB_MATRIX_DRIVER="$(RGB_MATRIX_DRIVER)" is not a valid matrix type)
@@ -517,6 +523,16 @@ endif
     ifeq ($(strip $(RGB_MATRIX_DRIVER)), APA102)
         OPT_DEFS += -DAPA102
         APA102_DRIVER_REQUIRED := yes
+    endif
+
+    ifeq ($(strip $(RGB_MATRIX_DRIVER)), SN32F24xB)
+        COMMON_VPATH += $(DRIVER_PATH)/led/sn32
+        SRC += rgb_matrix_sn32f24xb.c
+    endif
+
+    ifeq ($(strip $(RGB_MATRIX_DRIVER)), SN32F26x)
+        COMMON_VPATH += $(DRIVER_PATH)/led/sn32
+        SRC += rgb_matrix_sn32f26x.c
     endif
 
     ifeq ($(strip $(RGB_MATRIX_CUSTOM_KB)), yes)

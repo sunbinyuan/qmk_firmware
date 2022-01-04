@@ -28,6 +28,7 @@
 #     wb32-dfu     WB32 USB DFU in ROM
 #     tinyuf2      TinyUF2
 #     rp2040       Raspberry Pi RP2040
+#     sn32	       SN32
 # Current options for RISC-V:
 #     gd32v-dfu    GD32V USB DFU in ROM
 #
@@ -118,6 +119,14 @@ endif
 ifeq ($(strip $(BOOTLOADER)), wb32-dfu)
     OPT_DEFS += -DBOOTLOADER_WB32_DFU
     BOOTLOADER_TYPE = wb32_dfu
+endif
+ifeq ($(strip $(BOOTLOADER)), sn32)
+    OPT_DEFS += -DBOOTLOADER_SN32
+    BOOTLOADER_TYPE = sn32
+
+    # Options to pass to dfu-util when flashing
+    DFU_ARGS ?= -d 0C45:7040 -a 0 -s 0x08000000:leave
+    DFU_SUFFIX_ARGS ?= -v 0C45 -p 7040
 endif
 
 ifeq ($(strip $(BOOTLOADER_TYPE)),)

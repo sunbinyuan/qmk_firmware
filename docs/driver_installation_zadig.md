@@ -96,4 +96,5 @@ The device name here is the name that appears in Zadig, and may not be what the 
 |`gd32v-dfu`   |GD32V BOOTLOADER              |`28E9:0189`   |WinUSB |
 |`kiibohd`     |Kiibohd DFU Bootloader        |`1C11:B007`   |WinUSB |
 |`stm32duino`  |Maple 003                     |`1EAF:0003`   |WinUSB |
+|`sn32`        |Sonix                         |`0C45:7040`   |HidUsb |
 |`qmk-hid`     |(keyboard name) Bootloader    |`03EB:2067`   |HidUsb |
