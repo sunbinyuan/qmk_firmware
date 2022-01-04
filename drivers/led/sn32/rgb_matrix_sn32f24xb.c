@@ -1,5 +1,5 @@
 #include "rgb_matrix.h"
-#include "rgb_matrix_sn32f24xx.h"
+#include "sn32f24xb.h"
 
 #if !defined(RGB_MATRIX_HUE_STEP)
 #    define RGB_MATRIX_HUE_STEP 8

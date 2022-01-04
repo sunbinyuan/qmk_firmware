@@ -398,7 +398,6 @@ const rgb_matrix_driver_t rgb_matrix_driver = {
     .set_color     = setled,
     .set_color_all = setled_all,
 };
-#endif
 #elif defined(SN32F24xB)
 static void flush(void) {} // Due to the way we do PWM, every cycle is a flush
 
@@ -408,7 +407,6 @@ const rgb_matrix_driver_t rgb_matrix_driver = {
     .set_color     = SN32F24xB_set_color,
     .set_color_all = SN32F24xB_set_color_all,
 };
-#endif
 #elif defined(SN32F26x)
 static void init(void) {
     // NOP

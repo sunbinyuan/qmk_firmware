@@ -55,4 +55,5 @@
 #        ifndef FEE_PAGE_BASE_ADDRESS
 #            define FEE_PAGE_BASE_ADDRESS ((uint32_t)(FEE_PAGE_SIZE * FEE_TOTAL_PAGES - ((FEE_DENSITY_PAGES + 1) * FEE_PAGE_SIZE))) // Guard the last page
 #        endif
+#    endif
 #endif
