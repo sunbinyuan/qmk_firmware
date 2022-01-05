@@ -12,7 +12,7 @@ jobs:
   Build:
     runs-on: ubuntu-latest
 
-    container: dexter93/sonix_base_container
+    container: d3xter93/sonix_base_container
 
     steps:
     - uses: actions/checkout@v2
