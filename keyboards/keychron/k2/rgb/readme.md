@@ -5,6 +5,7 @@ K2 Gateron RGB v2
 Keyboard Maintainer: [Dimitris Mantzouranis](https://github.com/dexter93)
 Based on Redragon K566 by: [Adam Honse](https://github.com/CalcProgrammer1) and Kemove DK63 by: [Stephen Peery](https://github.com/smp4488)
 Hardware Supported: SN32F248BF
+EEPROM_DRIVER = transient
 
 Make example for this keyboard (after setting up your build environment):
 

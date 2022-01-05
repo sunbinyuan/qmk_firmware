@@ -5,6 +5,7 @@ SRC += config_led.c
 
 # MCU name
 MCU = SN32F248BF
+EEPROM_DRIVER = transient
 
 # Build Options
 #   comment out to disable the options.

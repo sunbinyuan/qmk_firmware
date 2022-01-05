@@ -5,6 +5,7 @@ Keychron K4 Gateron RGB V2
 Keyboard Maintainer: [Dimitris Mantzouranis](https://github.com/dexter93)
 Brought to you by: [SonixQMK](https://github.com/SonixQMK/qmk_firmware)
 Hardware Supported: SN32F248BF
+EEPROM_DRIVER = transient
 
 Make example for this keyboard (after setting up your build environment):
 

@@ -7,6 +7,7 @@ Layout by: [Alexander Frank](https://github.com/jedifindtrick)
 
 Based on Keychron K4 by: [Dimitris Mantzouranis](https://github.com/dexter93) and Keychron K6 by: [Alexander Frank](https://github.com/jedifindtrick) 
 Hardware Supported: SN32F248BF
+EEPROM_DRIVER = transient
 
 Make example for this keyboard (after setting up your build environment):
 

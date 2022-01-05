@@ -4,6 +4,7 @@ SRC += config_led.c
 
 # MCU name
 MCU = SN32F248BF
+EEPROM_DRIVER = transient
 
 # Custom RGB matrix handling
 RGB_MATRIX_ENABLE = yes
