@@ -94,7 +94,7 @@ void EEPROM_Erase(void) {
 /*****************************************************************************
  *  Writes data to flash on specified address.
  *******************************************************************************/
-uint16_t EEPROM_WriteDataByte(uint16_t Address, uint8_t DataByte) {
+uint8_t EEPROM_WriteDataByte(uint16_t Address, uint8_t DataByte) {
     FLASH_Status FlashStatus = FLASH_OKAY;
 
     /* if the address is out-of-bounds, do nothing */
@@ -123,7 +123,7 @@ uint16_t EEPROM_WriteDataByte(uint16_t Address, uint8_t DataByte) {
     return FlashStatus;
 }
 
-uint16_t EEPROM_WriteDataWord(uint16_t Address, uint16_t DataWord) {
+uint8_t EEPROM_WriteDataWord(uint16_t Address, uint16_t DataWord) {
     /* if the address is out-of-bounds, do nothing */
     if (Address >= FEE_DENSITY_BYTES) {
         eeprom_printf("EEPROM_WriteDataWord(0x%04x, 0x%04x) [BAD ADDRESS]\n", Address, DataWord);
@@ -143,7 +143,7 @@ uint16_t EEPROM_WriteDataWord(uint16_t Address, uint16_t DataWord) {
     }
 
     /* if the value is the same, don't bother writing it */
-    uint16_t storedData = EEPROM_ReadDataByte(Address);
+    uint8_t storedData = EEPROM_ReadDataByte(Address);
     uint16_t oldValue = *(uint16_t *)(&storedData);
     if (oldValue == DataWord) {
         eeprom_printf("EEPROM_WriteDataWord(0x%04x, 0x%04x) [SKIP SAME]\n", Address, DataWord);
@@ -181,7 +181,7 @@ uint16_t EEPROM_ReadDataWord(uint16_t Address) {
         if (Address % 2) {
             DataWord = EEPROM_ReadDataByte(Address) | (EEPROM_ReadDataByte(Address + 1) << 8);
         } else {
-            uint16_t storedData = EEPROM_ReadDataByte(Address);
+            uint8_t storedData = EEPROM_ReadDataByte(Address);
             DataWord = *(uint16_t *)(&storedData);
         }
     }
