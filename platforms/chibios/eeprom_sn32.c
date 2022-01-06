@@ -125,7 +125,7 @@ uint8_t EEPROM_WriteDataByte(uint16_t Address, uint8_t DataByte) {
 
 uint8_t EEPROM_WriteDataWord(uint16_t Address, uint16_t DataWord) {
     /* if the address is out-of-bounds, do nothing */
-    if (Address >= FEE_DENSITY_BYTES) {
+    if (Address > FEE_DENSITY_BYTES) {
         eeprom_printf("EEPROM_WriteDataWord(0x%04x, 0x%04x) [BAD ADDRESS]\n", Address, DataWord);
         return FLASH_FAIL;
     }
@@ -163,7 +163,7 @@ uint8_t EEPROM_WriteDataWord(uint16_t Address, uint16_t DataWord) {
 uint8_t EEPROM_ReadDataByte(uint16_t Address) {
     uint8_t DataByte = 0xFF;
 
-    if (Address < FEE_DENSITY_BYTES) {
+    if (Address <= FEE_DENSITY_BYTES) {
         // Get Byte from specified address
         DataByte = (*(__IO uint8_t *)(FEE_PAGE_BASE_ADDRESS + FEE_ADDR_OFFSET(Address)));
     }
@@ -176,7 +176,7 @@ uint8_t EEPROM_ReadDataByte(uint16_t Address) {
 uint16_t EEPROM_ReadDataWord(uint16_t Address) {
     uint16_t DataWord = 0xFFFF;
 
-    if (Address < FEE_DENSITY_BYTES - 1) {
+    if (Address <= FEE_DENSITY_BYTES) {
         /* Check word alignment */
         if (Address % 2) {
             DataWord = EEPROM_ReadDataByte(Address) | (EEPROM_ReadDataByte(Address + 1) << 8);
