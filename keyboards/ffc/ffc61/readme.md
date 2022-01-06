@@ -3,7 +3,6 @@
 ffc61
 
 Hardware Supported: SN32F248BF
-EEPROM_DRIVER = transient
 
 Make example for this keyboard (after setting up your build environment):
 

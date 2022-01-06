@@ -3,7 +3,6 @@ SRC += gmmk.c
 
 # MCU name
 MCU = SN32F268F
-EEPROM_DRIVER = transient
 
 # Build Options
 #   comment out to disable the options.

@@ -7,7 +7,6 @@ A compact 96% keyboard.
 Brought to you by: [SonixQMK](https://github.com/SonixQMK/qmk_firmware)
 
 * Hardware Supported: SN32F248BF
-EEPROM_DRIVER = transient
   * v1 (Gateron RGB)
   * v2 (Gateron RGB)
 * Hardware Availability: [keychron.com](https://www.keychron.com/)
