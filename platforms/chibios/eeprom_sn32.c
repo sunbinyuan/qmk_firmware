@@ -47,7 +47,7 @@
 /*
  * Debug print utils
  */
-#define DEBUG_EEPROM_OUTPUT
+
 #if defined(DEBUG_EEPROM_OUTPUT)
 
 #    define debug_eeprom debug_enable
