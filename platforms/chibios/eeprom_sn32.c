@@ -102,14 +102,14 @@ uint8_t EEPROM_WriteDataByte(uint16_t Address, uint8_t DataByte) {
         eeprom_printf("EEPROM_WriteDataByte(0x%04x, 0x%02x) [BAD ADDRESS]\n", Address, DataByte);
         return FLASH_FAIL;
     }
+    uint32_t addr = FEE_PAGE_BASE_ADDRESS + FEE_ADDR_OFFSET(Address);
 
     /* if the value is the same, don't bother writing it */
-    if (DataByte == *(__IO uint8_t *)(FEE_PAGE_BASE_ADDRESS + FEE_ADDR_OFFSET(Address))) {
+    if (DataByte == *(__IO uint8_t *)addr) {
         eeprom_printf("EEPROM_WriteDataByte(0x%04x, 0x%02x) [SKIP SAME]\n", Address, DataByte);
         return FLASH_OKAY;
     }
  
-    uint32_t addr = FEE_PAGE_BASE_ADDRESS + FEE_ADDR_OFFSET(Address);
 
     // update the data byte aligned in a 32-bit dword
     uint32_t value = *((uint32_t*)(addr & 0xFFFFFFFC));
@@ -143,7 +143,7 @@ uint8_t EEPROM_WriteDataWord(uint16_t Address, uint16_t DataWord) {
     }
 
     /* if the value is the same, don't bother writing it */
-    uint8_t storedData = EEPROM_ReadDataByte(Address);
+    uint16_t storedData = EEPROM_ReadDataWord(Address);
     uint16_t oldValue = *(uint16_t *)(&storedData);
     if (oldValue == DataWord) {
         eeprom_printf("EEPROM_WriteDataWord(0x%04x, 0x%04x) [SKIP SAME]\n", Address, DataWord);
