@@ -1,4 +1,3 @@
-#include "quantum.h"
 #include "rgb_matrix.h"
 
 /*

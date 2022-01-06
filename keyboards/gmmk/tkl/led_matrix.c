@@ -1,8 +1,4 @@
-#include <string.h>
-#include "rgb.h"
 #include "rgb_matrix.h"
-#include "rgb_matrix_types.h"
-#include "color.h"
 
 extern void _set_color(int index, uint8_t r, uint8_t g, uint8_t b);
 
