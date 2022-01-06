@@ -15,9 +15,6 @@
  */
 #include "white.h"
 #include "config.h"
-#include "rgb_matrix.h"
-#include "../../../drivers/sn32/rgb_matrix_sn32f24xx.h"
-#include "hal_pwm_lld.h"
 
 // Manage Windows and Mac LEDs
 // - Show status of mode switch
