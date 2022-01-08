@@ -139,7 +139,7 @@ uint8_t EEPROM_WriteDataWord(uint16_t Address, uint16_t DataWord) {
     uint32_t entryAddress = ((FEE_PAGE_BASE_ADDRESS + FEE_ADDR_OFFSET(Address))& 0xFFFFFFFC);
     uint32_t value = *((uint32_t*)(entryAddress));
     uint16_t* v16 = (uint16_t*)&value;
-    v16[entryAddress & 1] = DataWord;
+    v16[entryAddress & 2] = DataWord;
 
     /* perform the write into flash memory */
     FLASH_Status status = eeprom_write_entry(entryAddress, value);
