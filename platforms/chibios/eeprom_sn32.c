@@ -45,6 +45,8 @@
  * Debug print utils
  */
 
+// #define DEBUG_EEPROM_OUTPUT
+
 #if defined(DEBUG_EEPROM_OUTPUT)
 
 #    define debug_eeprom debug_enable
@@ -59,12 +61,12 @@
 
 #endif /* NO_DEBUG */
 
+
 /*****************************************************************************
  *  Delete Flash Space used for user Data, deletes the whole space between
  *  RW_PAGE_BASE_ADDRESS and the last uC Flash Page
  ******************************************************************************/
 uint16_t EEPROM_Init(void) {
-
     // Clear Flags
     // SN_FLASH->STATUS &= ~FLASH_PGERR
     if (debug_eeprom) {
@@ -91,79 +93,32 @@ void EEPROM_Erase(void) {
 /*****************************************************************************
  *  Writes data to flash on specified address.
  *******************************************************************************/
-static uint8_t eeprom_write_entry(uint32_t Address, uint32_t Data) {
-
-    /* Check if new data is differ to current data, return if not, proceed if yes */
-    if (Data == *(__IO uint32_t *)(Address)) {
-        eeprom_printf("EEPROM_WriteEntry [SKIP (0x%04x, 0x%02x)]\n", status);
-        return FLASH_OKAY;
-    }
-
-    /* Write to flash */
-    FLASH_Status status = FLASH_ProgramDWord(Address, Data);
-    if (status != FLASH_OKAY) {
-    eeprom_printf("EEPROM_WriteEntry [STATUS == %d]\n", status);
-    }
-
-    return status;
-}
-
 uint8_t EEPROM_WriteDataByte(uint16_t Address, uint8_t DataByte) {
+    FLASH_Status FlashStatus = FLASH_OKAY;
+
     /* if the address is out-of-bounds, do nothing */
     if (Address > FEE_DENSITY_BYTES) {
         eeprom_printf("EEPROM_WriteDataByte(0x%04x, 0x%02x) [BAD ADDRESS]\n", Address, DataByte);
         return FLASH_FAIL;
     }
-    /* Align the data in a 32-bit dword */
-    uint32_t entryAddress = ((FEE_PAGE_BASE_ADDRESS + FEE_ADDR_OFFSET(Address))& 0xFFFFFFFC);
-    uint32_t value = *((uint32_t*)(entryAddress));
+    uint32_t addr = FEE_PAGE_BASE_ADDRESS + FEE_ADDR_OFFSET(Address);
+
+    /* if the value is the same, don't bother writing it */
+    if (DataByte == *(__IO uint8_t *)addr) {
+        eeprom_printf("EEPROM_WriteDataByte(0x%04x, 0x%02x) [SKIP SAME]\n", Address, DataByte);
+        return FLASH_OKAY;
+    }
+ 
+    // update the data byte aligned in a 32-bit dword
+    uint32_t value = *((uint32_t*)(addr & 0xFFFFFFFC));
     uint8_t* v8 = (uint8_t*)&value;
-    v8[entryAddress & 3] = DataByte;
+    v8[addr & 3] = DataByte;
 
-    /* perform the write into flash memory */
-    FLASH_Status status = eeprom_write_entry(entryAddress, value);
-    if (status != FLASH_OKAY) {
-    eeprom_printf("EEPROM_WriteDataByte [STATUS == %d]\n", status);
-    }
+    // program the 32-bit dword
+    eeprom_printf("FLASH_ProgramDWord(0x%08x, 0x%04x) [DIRECT]\n", Address, value);
+    FlashStatus = FLASH_ProgramDWord(addr & 0xFFFFFFFC, value);
 
-    return status;
-}
-
-uint8_t EEPROM_WriteDataWord(uint16_t Address, uint16_t DataWord) {
-    /* if the address is out-of-bounds, do nothing */
-    if (Address > FEE_DENSITY_BYTES) {
-        eeprom_printf("EEPROM_WriteDataWord(0x%04x, 0x%04x) [BAD ADDRESS]\n", Address, DataWord);
-        return FLASH_FAIL;
-    }
-    /* Align the data in a 32-bit dword */
-    uint32_t entryAddress = ((FEE_PAGE_BASE_ADDRESS + FEE_ADDR_OFFSET(Address))& 0xFFFFFFFC);
-    uint32_t value = *((uint32_t*)(entryAddress));
-    uint16_t* v16 = (uint16_t*)&value;
-    v16[entryAddress & 2] = DataWord;
-
-    /* perform the write into flash memory */
-    FLASH_Status status = eeprom_write_entry(entryAddress, value);
-    if (status != FLASH_OKAY) {
-    eeprom_printf("EEPROM_WriteDataWord [STATUS == %d]\n", status);
-    }
-
-    return status;
-}
-
-uint8_t EEPROM_WriteDataDWord(uint16_t Address, uint32_t DataDWord) {
-    /* if the address is out-of-bounds, do nothing */
-    if (Address > FEE_DENSITY_BYTES) {
-        eeprom_printf("EEPROM_WriteDataDWord(0x%04x, 0x%04x) [BAD ADDRESS]\n", Address, DataDWord);
-        return FLASH_FAIL;
-    }
-    uint32_t entryAddress = ((FEE_PAGE_BASE_ADDRESS + FEE_ADDR_OFFSET(Address))& 0xFFFFFFFC);
-    /* perform the write into flash memory */
-    FLASH_Status status = eeprom_write_entry(entryAddress, DataDWord);
-    if (status != FLASH_OKAY) {
-    eeprom_printf("EEPROM_WriteDataDWord [STATUS == %d]\n", status);
-    }
-
-    return status;
+    return FlashStatus;
 }
 
 /*****************************************************************************
@@ -182,24 +137,6 @@ uint8_t EEPROM_ReadDataByte(uint16_t Address) {
     return DataByte;
 }
 
-uint16_t EEPROM_ReadDataWord(uint16_t Address) {
-    uint16_t DataWord = 0xFFFF;
-
-    if (Address <= FEE_DENSITY_BYTES) {
-        /* Check word alignment */
-        if (Address % 2) {
-            DataWord = EEPROM_ReadDataByte(Address) | (EEPROM_ReadDataByte(Address + 1) << 8);
-        } else {
-            uint8_t storedData = EEPROM_ReadDataByte(Address);
-            DataWord = *(uint16_t *)(&storedData);
-        }
-    }
-
-    eeprom_printf("EEPROM_ReadDataWord(0x%04x): 0x%04x\n", Address, DataWord);
-
-    return DataWord;
-}
-
 /*****************************************************************************
  *  Bind to eeprom_driver.c
  *******************************************************************************/
@@ -208,74 +145,17 @@ void eeprom_driver_init(void) { EEPROM_Init(); }
 void eeprom_driver_erase(void) { EEPROM_Erase(); }
 
 void eeprom_read_block(void *buf, const void *addr, size_t len) {
-    const uint8_t *src  = (const uint8_t *)addr;
+    const uint8_t *p    = (const uint8_t *)addr;
     uint8_t *      dest = (uint8_t *)buf;
-
-    /* Check word alignment */
-    if (len && (uint32_t)src % 2) {
-        /* Read the unaligned first byte */
-        *dest++ = EEPROM_ReadDataByte((const uintptr_t)((uint16_t *)src));
-        --len;
-    }
-
-    uint16_t value;
-    bool     aligned = ((uint32_t)dest % 2 == 0);
-    while (len > 1) {
-        value = EEPROM_ReadDataWord((const uintptr_t)((uint16_t *)src));
-        if (aligned) {
-            *(uint16_t *)dest = value;
-            dest += 2;
-        } else {
-            *dest++ = value;
-            *dest++ = value >> 8;
-        }
-        src += 2;
-        len -= 2;
-    }
-    if (len) {
-        *dest = EEPROM_ReadDataByte((const uintptr_t)src);
+    while (len--) {
+        *dest++ = EEPROM_ReadDataByte((uint16_t)(uint32_t)(p++));
     }
 }
 
 void eeprom_write_block(const void *buf, void *addr, size_t len) {
-    uint8_t *      dest = (uint8_t *)addr;
-    const uint8_t *src  = (const uint8_t *)buf;
-    uint8_t        write_len;
-
-    while (len > 0) {
-        /* Check and try to write double word fisrt */
-        if ((uintptr_t)dest % 4 == 0 && len >= 4) {
-            uint32_t dwvalue;
-            bool     dwaligned = ((uint32_t)src % 4 == 0);
-
-            if (dwaligned) {
-                dwvalue = *(uint32_t *)src;
-            } else {
-                dwvalue = *(uint8_t *)src | (*(uint8_t *)(src + 1) << 8) | (*(uint8_t *)(src + 2) << 16) | (*(uint8_t *)(src + 3) << 24);
-            }
-            EEPROM_WriteDataDWord((uintptr_t)((uint16_t *)dest), dwvalue);
-            write_len = 4;
-        }
-        /* Check and try to write word */
-        else if ((uintptr_t)dest % 2 == 0 && len >= 2) {
-            uint16_t wvalue;
-            bool     waligned = ((uintptr_t)src % 2 == 0);
-
-            if (waligned) {
-                wvalue = *(uint16_t *)src;
-            } else {
-                wvalue = *(uint8_t *)src | (*(uint8_t *)(src + 1) << 8);
-            }
-            EEPROM_WriteDataWord((uintptr_t)((uint16_t *)dest), wvalue);
-            write_len = 2;
-        } else {
-            /* Write the unaligned or single byte */
-            EEPROM_WriteDataByte((uintptr_t)dest++, *src++);
-            write_len = 1;
-        }
-
-        dest += write_len;
-        src += write_len;
-        len -= write_len;
+    uint8_t *      p   = (uint8_t *)addr;
+    const uint8_t *src = (const uint8_t *)buf;
+    while (len--) {
+        EEPROM_WriteDataByte((uint16_t)(uint32_t)p++, *src++);
     }
 }
