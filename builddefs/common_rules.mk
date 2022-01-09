@@ -20,16 +20,6 @@ $(foreach OUTPUT,$(OUTPUTS),$(eval $(OUTPUT)_OBJ +=$(call OBJ_FROM_SRC,$(OUTPUT)
 
 # Define a list of all objects
 OBJ := $(foreach OUTPUT,$(OUTPUTS),$($(OUTPUT)_OBJ))
-
-# Bug: `arm-none-eabi-gcc (GNU Arm Embedded Toolchain 10-2020-q2-preview) 10.1.1 20200529 (release)` fails to link some of the ISRs, and instead uses the weak unhandled exception stub.
-# Cause: This seems to be a compiler bug, because building with `arm-none-eabi-gcc (GNU Arm Embedded Toolchain 10-2020-q4-major) 10.2.1 20201103 (release)` results in a image with all the correct ISRs linked.
-# Workaround: Not all ISRs failed to overrule the weak unhandled exception stub.
-# Somehow this is determined by order of the object files passed to the linker.
-# Objects that where linked after vector.o, the object that contains the weak unhandled exception stubs, where successful in overruling the stubs.
-# But object that where linked before vector.o failed to overrule the stubs.
-# So the workaround is to move the vectors.o object to the start of the OBJ list, this way all other objects are linked after it, and can overrule the weak unhandled exception stubs.
-OBJ := $(filter %vectors.o,$(OBJ)) $(filter-out %vectors.o,$(OBJ))
-
 NO_LTO_OBJ := $(filter %.a,$(OBJ))
 
 MASTER_OUTPUT := $(firstword $(OUTPUTS))
