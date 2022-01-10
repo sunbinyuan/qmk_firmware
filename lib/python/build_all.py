@@ -3,6 +3,7 @@ import os
 import sys
 
 BOARDS = [
+    'redragon/k552/rev1',
     'redragon/k552/rev2',
     'redragon/k530',
     'redragon/k556',
@@ -45,8 +46,13 @@ BOARDS = [
     'keychron/k14/rgb/via',
     'keychron/k14/rgb/optical',
     'keychron/k14/rgb/optical_via',
+    'ajazz/ak33/rev1',
     'ajazz/ak33/rev2',
+    'sharkoon/sgk3',
     'smartduck/xs61',
+    'spcgear/gk530',
+    'spcgear/gk540',
+    'marvo/kg938',
     'womier/k87',
     'flashquark/horizon_z',
     'ffc/ffc61',
