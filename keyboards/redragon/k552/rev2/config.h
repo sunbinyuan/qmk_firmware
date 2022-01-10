@@ -24,8 +24,7 @@
 #define DEVICE_VER      0x0001
 
 #define MANUFACTURER    Redragon
-#define PRODUCT         K552
-#define DESCRIPTION     K552 Kumara
+#define PRODUCT         K552 Kumara
 
 /* key matrix size */
 #define MATRIX_ROWS 6

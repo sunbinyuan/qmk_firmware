@@ -1,9 +1,4 @@
-#include <string.h>
-#include "rgb.h"
 #include "rgb_matrix.h"
-#include "rgb_matrix_types.h"
-#include "color.h"
-
 /*
     COLS key / led
     PWM PWM00A - PWM21A (PWM15A unused)

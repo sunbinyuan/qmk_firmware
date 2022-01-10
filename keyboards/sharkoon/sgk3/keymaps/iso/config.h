@@ -25,8 +25,7 @@
 #define DEVICE_VER      0x0001
 
 #define MANUFACTURER    Sharkoon
-#define PRODUCT         SGK3
-#define DESCRIPTION     SKILLER MECH SGK3
+#define PRODUCT         SKILLER MECH SGK3
 
 /* Additional options */
 #define RGB_MATRIX_ENABLE 1

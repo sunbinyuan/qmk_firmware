@@ -25,8 +25,7 @@
 #define DEVICE_VER      0x0001
 
 #define MANUFACTURER    Redragon
-#define PRODUCT         K552
-#define DESCRIPTION     K552 Kumara
+#define PRODUCT         K552 Kumara
 
 /* Additional options */
 #define RGB_MATRIX_ENABLE 1
