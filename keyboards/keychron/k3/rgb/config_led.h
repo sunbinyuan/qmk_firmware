@@ -30,4 +30,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LED_MATRIX_COLS MATRIX_COLS
 #define LED_MATRIX_COL_PINS MATRIX_COL_PINS
 
+#ifdef KEYMAP_ISO
+#define DRIVER_LED_TOTAL (85)
+#else
 #define DRIVER_LED_TOTAL (84)
+#endif
