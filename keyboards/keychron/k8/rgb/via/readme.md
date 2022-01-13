@@ -4,7 +4,7 @@ K8 Gateron Hotswap RGB with VIA support
 
 Make example for this keyboard (after setting up your build environment):
 
-    make keychron/k8/via:ansi
+    make keychron/k8/rgb/via:ansi
 
 For default ISO:
 
