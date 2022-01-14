@@ -1,77 +1,15 @@
 import subprocess
 import os
 import sys
+BOARDS = []
 
-BOARDS = [
-    'ajazz/ak33/rev1',
-    'ajazz/ak33/rev2',
-    'akko/3061_rgb',
-    'aukey/kmg12',
-    'ffc/ffc61',
-    'flashquark/horizon_z',
-    'gmmk/compact/rev2',
-    'gmmk/compact/rev3',
-    'gmmk/compact',
-    'gmmk/full/rev2',
-    'gmmk/full/rev3',
-    'gmmk/full',
-    'gmmk/pro/ansi',
-    'gmmk/pro/iso',
-    'gmmk/tkl/rev2',
-    'gmmk/tkl/rev3',
-    'gmmk/tkl',
-    'keychron/c1/plain',
-    'keychron/c1/rgb',
-    'keychron/c1/white',
-    'keychron/c2/white',
-    'keychron/k14/rgb/optical',
-    'keychron/k14/rgb/optical_via',
-    'keychron/k14/rgb',
-    'keychron/k14/rgb/via',
-    'keychron/k2/rgb/optical',
-    'keychron/k2/rgb/optical_via',
-    'keychron/k2/rgb',
-    'keychron/k2/rgb/via',
-    'keychron/k3/rgb/optical',
-    'keychron/k3/rgb/optical_via',
-    'keychron/k3/rgb',
-    'keychron/k3/rgb/via',
-    'keychron/k4/rgb',
-    'keychron/k4/rgb/v1/optical',
-    'keychron/k4/rgb/v1/optical_via',
-    'keychron/k4/rgb/v1',
-    'keychron/k4/rgb/v1/via',
-    'keychron/k4/rgb/v2/optical',
-    'keychron/k4/rgb/v2/optical_via',
-    'keychron/k4/rgb/v2',
-    'keychron/k4/rgb/v2/via',
-    'keychron/k6/rgb/optical',
-    'keychron/k6/rgb/optical_via',
-    'keychron/k6/rgb',
-    'keychron/k6/rgb/via',
-    'keychron/k6/white',
-    'keychron/k7/rgb/optical',
-    'keychron/k7/rgb/optical_via',
-    'keychron/k7/rgb',
-    'keychron/k7/rgb/via',
-    'keychron/k8/rgb/optical',
-    'keychron/k8/rgb/optical_via',
-    'keychron/k8/rgb',
-    'keychron/k8/rgb/via',
-    'marvo/kg938',
-    'redragon/k530',
-    'redragon/k552/rev1',
-    'redragon/k552/rev2',
-    'redragon/k556',
-    'redragon/k580',
-    'redragon/k582',
-    'redragon/k630',
-    'sharkoon/sgk3',
-    'smartduck/xs61',
-    'spcgear/gk530',
-    'spcgear/gk540',
-    'womier/k87'
-]
+def main():
+    for line in sys.stdin:
+        if line.strip() != "":
+            BOARDS.append(line.strip())
+
+if __name__ == '__main__':
+    main()
 
 error = False
 for kb in BOARDS:
