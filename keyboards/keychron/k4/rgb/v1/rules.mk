@@ -1,3 +1,6 @@
+# MCU name
+MCU = SN32F248BF
+
 # Build Options
 #   comment out to disable the options.
 #
