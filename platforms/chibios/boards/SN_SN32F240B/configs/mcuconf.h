@@ -61,12 +61,9 @@
 #define PLATFORM_USB_USE_USB1 TRUE
 
 /*
- * Timer driver system settings.
+ * System Clock settings.
  */
-#define SYS_CLOCK_SETUP 1
-#define SYS0_CLKCFG_VAL 0
-#define AHB_PRESCALAR 0
-#define CLKOUT_SEL_VAL 0x0
-#define CLKOUT_PRESCALAR 0x0
+// Defaults are correct
+
 
 #endif /* MCUCONF_H */

@@ -53,6 +53,7 @@ static uint8_t chan_col_order[LED_MATRIX_COLS] = {0}; // track the channel col o
 static uint8_t current_row = 0; // LED row scan counter
 static uint8_t row_idx = 0; // key row scan counter
 extern matrix_row_t raw_matrix[MATRIX_ROWS]; //raw values
+static const uint32_t periodticks = 256;
 static const uint32_t freq = (RGB_MATRIX_HUE_STEP * RGB_MATRIX_SAT_STEP * RGB_MATRIX_VAL_STEP * RGB_MATRIX_SPD_STEP * RGB_MATRIX_LED_PROCESS_LIMIT);
 static const pin_t led_row_pins[LED_MATRIX_ROWS_HW] = LED_MATRIX_ROW_PINS; // We expect a R,B,G order here
 static const pin_t led_col_pins[LED_MATRIX_COLS] = LED_MATRIX_COL_PINS;
@@ -61,10 +62,10 @@ bool enable_pwm = false;
 
 /* PWM configuration structure. We use timer CT16B1 with 24 channels. */
 static PWMConfig pwmcfg = {
-    freq,          /* PWM clock frequency. */
-    256,           /* PWM period (in ticks) 1S (1/10kHz=0.1mS 0.1ms*10000 ticks=1S) */
-    NULL,          /* RGB Callback */
-    {              /* Default all channels to disabled - Channels will be configured durring init */
+    freq,            /* PWM clock frequency. */
+    periodticks,     /* PWM period (in ticks) 1S (1/10kHz=0.1mS 0.1ms*10000 ticks=1S) */
+    NULL,            /* RGB Callback */
+    {                /* Default all channels to disabled - Channels will be configured durring init */
         {PWM_OUTPUT_DISABLED, NULL, 0},
         {PWM_OUTPUT_DISABLED, NULL, 0},
         {PWM_OUTPUT_DISABLED, NULL, 0},

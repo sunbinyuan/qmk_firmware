@@ -37,7 +37,11 @@
 /*
  * HAL driver system settings.
  */
-
+/*
+ * CT driver system settings.
+ */
+#define SN32_HAS_CT16B0 TRUE
+#define SN32_HAS_CT16B1 TRUE
 /*
  * SN driver system settings.
  */
