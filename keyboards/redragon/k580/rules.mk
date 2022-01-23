@@ -1,6 +1,5 @@
 # project specific files
 SRC = ../../../drivers/led/sn32/matrix_sn32f24xx.c
-SRC += led_matrix.c
 SRC += config_led.c
 
 # MCU name
@@ -32,4 +31,4 @@ ENCODER_ENABLE =yes
 
 # Custom RGB matrix handling
 RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_DRIVER = custom
+RGB_MATRIX_DRIVER = SN32F24xB
