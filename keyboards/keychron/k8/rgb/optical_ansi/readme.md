@@ -1,15 +1,11 @@
 # Keychron K8
 
-K8 Gateron Hotswap RGB with VIA support
+K8 Optical ANSI RGB
 
 Make example for this keyboard (after setting up your build environment):
 
-    make keychron/k8/rgb/via:ansi
+    make keychron/k8/optical_ansi:ansi
 
-For default ISO:
-
-    make keychron/k8/rgb/via:iso
-    
 * * *
 For more info and detailed flashing instructions, please visit https://github.com/alex-dinh/keychron-k8
 

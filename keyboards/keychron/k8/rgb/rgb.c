@@ -1,6 +1,6 @@
 /* Copyright 2020 Adam Honse <calcprogrammer1@gmail.com>
  * Copyright 2020 Dimitris Mantzouranis <d3xter93@gmail.com>
- * Copyright 2022 Harrison Chan (Xelus)
+ * Copyright 2021 Harrison Chan (Xelus)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,16 +16,4 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-
-#include "quantum.h"
-
-#if defined(KEYBOARD_keychron_k8_rgb_ansi)
-    #include "ansi.h"
-#elif defined(KEYBOARD_keychron_k8_rgb_iso)
-    #include "iso.h"
-#elif defined(KEYBOARD_keychron_k8_rgb_optical_ansi)
-    #include "optical_ansi.h"
-#elif defined(KEYBOARD_keychron_k8_rgb_optical_iso)
-    #include "optical_iso.h"
-#endif
+#include "rgb.h"
