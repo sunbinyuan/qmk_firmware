@@ -3,4 +3,4 @@ SRC += ../led_matrix.c
 SRC += backlight.c
 SRC += SPI0.c
 
-OPT_DEFS += -DSN32_SPI_CLKDIV=7
+OPT_DEFS += -DSN32_SPI_CLKDIV=4
