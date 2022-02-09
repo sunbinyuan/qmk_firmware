@@ -358,7 +358,7 @@ ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
 endif
 
 LED_MATRIX_ENABLE ?= no
-VALID_LED_MATRIX_TYPES := IS31FL3731 IS31FL3742A IS31FL3743A IS31FL3745 IS31FL3746A CKLED2001 custom
+VALID_LED_MATRIX_TYPES := IS31FL3731 IS31FL3742A IS31FL3743A IS31FL3745 IS31FL3746A CKLED2001 SN32F26x custom
 # TODO: IS31FL3733 IS31FL3737 IS31FL3741
 
 ifeq ($(strip $(LED_MATRIX_ENABLE)), yes)
@@ -420,7 +420,11 @@ endif
         SRC += ckled2001-simple.c
         QUANTUM_LIB_SRC += i2c_master.c
     endif
-
+    ifeq ($(strip $(LED_MATRIX_DRIVER)), SN32F26x)
+        OPT_DEFS += -DSN32F26x
+        COMMON_VPATH += $(DRIVER_PATH)/led/sn32
+        SRC += led_matrix_sn32f26x.c
+    endif
 endif
 
 RGB_MATRIX_ENABLE ?= no
@@ -529,12 +533,6 @@ endif
         OPT_DEFS += -DSN32F24xB
         COMMON_VPATH += $(DRIVER_PATH)/led/sn32
         SRC += rgb_matrix_sn32f24xb.c
-    endif
-
-    ifeq ($(strip $(RGB_MATRIX_DRIVER)), SN32F26x)
-        OPT_DEFS += -DSN32F26x
-        COMMON_VPATH += $(DRIVER_PATH)/led/sn32
-        SRC += rgb_matrix_sn32f26x.c
     endif
 
     ifeq ($(strip $(RGB_MATRIX_CUSTOM_KB)), yes)
