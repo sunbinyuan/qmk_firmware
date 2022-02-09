@@ -14,16 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+/* USB Device descriptor parameter */
+#define PRODUCT_ID      0xFE03
+#define DEVICE_VER      0x0001
 
-#include "quantum.h"
-
-#if defined(KEYBOARD_keychron_k2_rgb_ansi)
-    #include "ansi.h"
-#elif defined(KEYBOARD_keychron_k2_rgb_iso)
-    #include "iso.h"
-#elif defined(KEYBOARD_keychron_k2_rgb_optical_ansi)
-    #include "optical_ansi.h"
-#elif defined(KEYBOARD_keychron_k2_rgb_optical_iso)
-    #include "optical_iso.h"
-#endif
+/* RGB LED Config */
+#define DRIVER_LED_TOTAL (85)
