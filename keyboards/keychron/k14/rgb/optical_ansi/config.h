@@ -15,12 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
 
-#include "quantum.h"
+/* USB Device descriptor parameter */
+#define PRODUCT_ID      0xFE1A
+#define DEVICE_VER      0x0001
 
-#if defined(KEYBOARD_keychron_k14_rgb_ansi)
-    #include "ansi.h"
-#elif defined(KEYBOARD_keychron_k14_rgb_optical_ansi)
-    #include "optical_ansi.h"
-#endif
+/* RGB LED Config */
+#define DRIVER_LED_TOTAL (72)

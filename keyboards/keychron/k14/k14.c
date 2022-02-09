@@ -15,12 +15,4 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-
-#include "quantum.h"
-
-#if defined(KEYBOARD_keychron_k14_rgb_ansi)
-    #include "ansi.h"
-#elif defined(KEYBOARD_keychron_k14_rgb_optical_ansi)
-    #include "optical_ansi.h"
-#endif
+#include "k14.h"

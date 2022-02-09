@@ -19,8 +19,8 @@
 
 #include "quantum.h"
 
-#if defined(KEYBOARD_keychron_k14_rgb_ansi)
-    #include "ansi.h"
-#elif defined(KEYBOARD_keychron_k14_rgb_optical_ansi)
-    #include "optical_ansi.h"
+#if defined(KEYBOARD_keychron_k14_rgb)
+    #include "rgb.h"
+#elif defined(KEYBOARD_keychron_k14_white)
+    #include "white.h"
 #endif

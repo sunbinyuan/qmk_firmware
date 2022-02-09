@@ -1,5 +1,4 @@
 /* Copyright 2022 Dimitris Mantzouranis <d3xter93@gmail.com>
- * Copyright 2022 Pablo Ramirez <jp.ramangulo@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,10 +16,4 @@
 
 #pragma once
 
-#include "quantum.h"
-
-#if defined(KEYBOARD_keychron_k14_rgb_ansi)
-    #include "ansi.h"
-#elif defined(KEYBOARD_keychron_k14_rgb_optical_ansi)
-    #include "optical_ansi.h"
-#endif
+#include "config_common.h"
