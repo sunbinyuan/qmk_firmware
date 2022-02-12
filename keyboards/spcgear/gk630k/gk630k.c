@@ -17,6 +17,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "gk630k.h"
 
+void keyboard_pre_init_kb(void) {
+    // Set GUI Key lock diode to output
+    setPinOutput(LED_WIN_LOCK_PIN);
+
+    keyboard_pre_init_user();
+}
+
 void suspend_power_down_kb(void) {
     // Suspend RGB matrix on S4 and S5 state
     rgb_matrix_set_suspend_state(true);

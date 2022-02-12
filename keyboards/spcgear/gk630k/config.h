@@ -29,12 +29,14 @@
 #define PRODUCT         GK630K
 #define DESCRIPTION     GK630K Tournament
 
-/* key matrix size */
+/* Key Matrix size */
 #define MATRIX_ROWS     6
 #define MATRIX_COLS     17
 
+/* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION ROW2COL
 
+/* Key Matrix pins */
 #define MATRIX_COL_PINS { A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, B0, B1 }
 #define MATRIX_ROW_PINS { C15, D11, D10, D9, D8, D7 }
 
@@ -52,7 +54,7 @@
 
 /* LED Status indicators */
 #define LED_CAPS_LOCK_PIN   B14
-#define LED_WIN_LOCK_PIN    B15 // One of the features in stock firmware (not implemented yet)
+#define LED_WIN_LOCK_PIN    B15 // GUI Key lock
 #define LED_PIN_ON_STATE    0
 
 /* RGB Matrix config */

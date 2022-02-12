@@ -30,10 +30,19 @@ enum layer_names {
     VIA2    = 3
 };
 
+enum spcgear_keycodes {
+    RGB_L1 = SAFE_RANGE,
+    RGB_L2,
+    RGB_L3,
+    RGB_L4,
+    RGB_L5,
+    RGB_L6
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = {
 
-        /*  ANSI layout
+        /* ANSI layout
         +--------------------------------------------------------------------------------------------+
         | ESC |    | F1 | F2 | F3 | F4 | | F5 | F6 | F7 | F8 | | F9 | F10| F11| F12|  |PSCR|SLCK|PAUS|
         +--------------------------------------------------------------------------+  +--------------+
@@ -58,17 +67,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         {   KC_LCTL,  KC_LGUI,  KC_LALT,  KC_SPC,   KC_RALT,  MO(1),    KC_APP,   KC_NO,    KC_RCTL,  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_LEFT,  KC_DOWN,  KC_RIGHT }
     },
 
+        /* FN layout
+        +--------------------------------------------------------------------------------------------+
+        |RESET|    |MYCM|WHOM|CALC|MSEL| |MPRV|MNXT|MPLY|MSTP| |MUTE|VOLD|VOLU|    |  |    |    |NKTG|
+        +--------------------------------------------------------------------------+  +--------------+
+        |     |    |    |    |    |    |    |    |    |    |    |    |HUI |        |  |M_B |MOD |    |
+        +--------------------------------------------------------------------------+  +--------------+
+        |       |    |    |    |    |    |    |    |    |    |    |    |    |      |  |M_R |RMOD|M_P |
+        +--------------------------------------------------------------------------+  +--------------+
+        |          |    |    |    |    |    |    |    |    |    |   |   |          |                 |
+        +--------------------------------------------------------------------------+       +----+    |
+        |            |    |    |    |    |    |    |    |   |   |    |             |       |VAI |    |
+        +--------------------------------------------------------------------------+  +--------------+
+        |     |GUI_TOG|     |                              |     |     |     |     |  |SPD |VAD |SPI |
+        +--------------------------------------------------------------------------------------------+
+        */
+
     [FN]   = {
         /*  0         1         2         3         4         5         6         7         8         9         10        11        12        13        14        15        16      */
-        {   RESET,    KC_MYCM,  KC_WHOM,  KC_CALC,  KC_MSEL,  KC_MPRV,  KC_MNXT,  KC_MPLY,  KC_MSTP,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,  _______,  _______,  _______,  _______  },
-        {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RGB_HUI,  _______,  RGB_M_B,  RGB_MOD,  _______  },
-        {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RGB_M_R,  RGB_RMOD, RGB_M_P  },
+        {   RESET,    KC_MYCM,  KC_WHOM,  KC_CALC,  KC_MSEL,  KC_MPRV,  KC_MNXT,  KC_MPLY,  KC_MSTP,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,  _______,  _______,  _______,  NK_TOGG  },
+        {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RGB_HUI,  _______,  RGB_L1,   RGB_L2,   RGB_L3   },
+        {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RGB_L4,   RGB_L5,   RGB_L6   },
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  },
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RGB_VAI,  _______  },
-        {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RGB_SPD,  RGB_VAD,  RGB_SPI  }
+        {   _______,  GUI_TOG,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RGB_SPD,  RGB_VAD,  RGB_SPI  }
     },
 
-    [VIA1]   = {
+    [VIA1] = {
         /*  0         1         2         3         4         5         6         7         8         9         10        11        12        13        14        15        16      */
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  },
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  },
@@ -78,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  }
     },
 
-    [VIA2]   = {
+    [VIA2] = {
         /*  0         1         2         3         4         5         6         7         8         9         10        11        12        13        14        15        16      */
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  },
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  },
@@ -86,5 +111,130 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  },
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  },
         {   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______  }
-    },
+    }
 };
+
+/* RGB_L* current mode keepers */
+uint8_t l1 = 1; uint8_t l2 = 1; uint8_t l3 = 1; uint8_t l4 = 1; uint8_t l5 = 1; uint8_t l6 = 1;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode) {
+        /* RGB_L1 to RGB_L6 keys are used to choose from 18 different RGB modes (3 modes for each key) */
+        case RGB_L1:
+            if(record->event.pressed) {
+                switch(l1) {
+                    case 1:
+                        rgb_matrix_mode(RGB_MATRIX_CYCLE_ALL);
+                        l1++;
+                        break;
+                    case 2:
+                        rgb_matrix_mode(RGB_MATRIX_GRADIENT_LEFT_RIGHT);
+                        l1++;
+                        break;
+                    case 3:
+                        rgb_matrix_mode(RGB_MATRIX_RAINBOW_BEACON);
+                        l1 = 1;
+                        break;
+                }
+            }
+            return true;
+        case RGB_L2:
+            if(record->event.pressed) {
+                switch(l2) {
+                    case 1:
+                        rgb_matrix_mode(RGB_MATRIX_MULTISPLASH);
+                        l2++;
+                        break;
+                    case 2:
+                        rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE_SIMPLE);
+                        l2++;
+                        break;
+                    case 3:
+                        rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE_NEXUS);
+                        l2 = 1;
+                        break;
+                }
+            }
+            return true;
+        case RGB_L3:
+            if(record->event.pressed) {
+                switch(l3) {
+                    case 1:
+                        rgb_matrix_mode(RGB_MATRIX_PIXEL_FRACTAL);
+                        l3++;
+                        break;
+                    case 2:
+                        rgb_matrix_mode(RGB_MATRIX_GRADIENT_LEFT_RIGHT);
+                        l3++;
+                        break;
+                    case 3:
+                        rgb_matrix_mode(RGB_MATRIX_PIXEL_RAIN);
+                        l3 = 1;
+                        break;
+                }
+            }
+            return true;
+        case RGB_L4:
+            if(record->event.pressed) {
+                switch(l4) {
+                    case 1:
+                        rgb_matrix_mode(RGB_MATRIX_CYCLE_LEFT_RIGHT);
+                        l4++;
+                        break;
+                    case 2:
+                        rgb_matrix_mode(RGB_MATRIX_PIXEL_FRACTAL);
+                        l4++;
+                        break;
+                    case 3:
+                        rgb_matrix_mode(RGB_MATRIX_RAINBOW_BEACON);
+                        l4 = 1;
+                        break;
+                }
+            }
+            return true;
+        case RGB_L5:
+            if(record->event.pressed) {
+                switch(l5) {
+                    case 1:
+                        rgb_matrix_mode(RGB_MATRIX_JELLYBEAN_RAINDROPS);
+                        l5++;
+                        break;
+                    case 2:
+                        rgb_matrix_mode(RGB_MATRIX_RAINDROPS);
+                        l5++;
+                        break;
+                    case 3:
+                        rgb_matrix_mode(RGB_MATRIX_CYCLE_UP_DOWN);
+                        l5 = 1;
+                        break;
+                }
+            }
+            return true;
+        case RGB_L6:
+            if(record->event.pressed) {
+                switch(l6) {
+                    case 1:
+                        rgb_matrix_mode(RGB_MATRIX_HUE_PENDULUM);
+                        l6++;
+                        break;
+                    case 2:
+                        rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
+                        l6++;
+                        break;
+                    case 3:
+                        rgb_matrix_mode(RGB_MATRIX_CYCLE_OUT_IN);
+                        l6 = 1;
+                        break;
+                }
+            }
+            return true;
+        /* GUI_TOG key will now change GUI Key lock diode input accordingly to the state of keymap_config.no_gui */
+        case GUI_TOG:
+            if(record->event.pressed) {
+                writePin(LED_WIN_LOCK_PIN, keymap_config.no_gui);
+            }
+            return true;
+        default:
+            return true;
+    }
+}
