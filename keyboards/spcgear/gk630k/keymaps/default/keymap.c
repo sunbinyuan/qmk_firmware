@@ -94,8 +94,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
-  debug_enable=true;
-  debug_matrix=true;
+  //debug_enable=true;
+  //debug_matrix=true;
   //debug_keyboard=true;
   //debug_mouse=true;
 }
@@ -128,7 +128,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if(record->event.pressed) {
                 switch(l2) {
                     case 1:
-                        rgb_matrix_mode(RGB_MATRIX_MULTISPLASH); /* Not LIKE in original */
+                        rgb_matrix_mode(RGB_MATRIX_MULTISPLASH);
                         l2++;
                         break;
                     case 2:
@@ -136,7 +136,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         l2++;
                         break;
                     case 3:
-                        rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE_NEXUS); /* Not in original */ /* Previously: RGB_MATRIX_SOLID_REACTIVE_WIDE */
+                        rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE_NEXUS);
                         l2 = 1;
                         break;
                 }
@@ -146,15 +146,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if(record->event.pressed) {
                 switch(l3) {
                     case 1:
-                        rgb_matrix_mode(RGB_MATRIX_PIXEL_FRACTAL); /* Not in original */ /* Previously: RGB_MATRIX_HUE_WAVE */
+                        rgb_matrix_mode(RGB_MATRIX_PIXEL_FRACTAL);
                         l3++;
                         break;
                     case 2:
-                        rgb_matrix_mode(RGB_MATRIX_GRADIENT_LEFT_RIGHT); /* Not in original */
+                        rgb_matrix_mode(RGB_MATRIX_GRADIENT_LEFT_RIGHT);
                         l3++;
                         break;
                     case 3:
-                        rgb_matrix_mode(RGB_MATRIX_PIXEL_RAIN); /* Not LIKE in original */
+                        rgb_matrix_mode(RGB_MATRIX_PIXEL_RAIN);
                         l3 = 1;
                         break;
                 }
@@ -168,11 +168,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         l4++;
                         break;
                     case 2:
-                        rgb_matrix_mode(RGB_MATRIX_PIXEL_FRACTAL); /* Change it */
+                        rgb_matrix_mode(RGB_MATRIX_PIXEL_FRACTAL);
                         l4++;
                         break;
                     case 3:
-                        rgb_matrix_mode(RGB_MATRIX_RAINBOW_BEACON); /* Not in original */
+                        rgb_matrix_mode(RGB_MATRIX_RAINBOW_BEACON);
                         l4 = 1;
                         break;
                 }
@@ -186,7 +186,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         l5++;
                         break;
                     case 2:
-                        rgb_matrix_mode(RGB_MATRIX_RAINDROPS); /* Not LIKE in original */
+                        rgb_matrix_mode(RGB_MATRIX_RAINDROPS);
                         l5++;
                         break;
                     case 3:
@@ -200,7 +200,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if(record->event.pressed) {
                 switch(l6) {
                     case 1:
-                        rgb_matrix_mode(RGB_MATRIX_HUE_PENDULUM); /* Not in original */
+                        rgb_matrix_mode(RGB_MATRIX_HUE_PENDULUM);
                         l6++;
                         break;
                     case 2:
@@ -208,7 +208,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         l6++;
                         break;
                     case 3:
-                        rgb_matrix_mode(RGB_MATRIX_CYCLE_OUT_IN);  /* Not LIKE in original */
+                        rgb_matrix_mode(RGB_MATRIX_CYCLE_OUT_IN);
                         l6 = 1;
                         break;
                 }
