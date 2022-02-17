@@ -58,8 +58,8 @@
 /*
  * USB driver system settings.
  */
-#define CRT1_AREAS_NUMBER 1
-#define PLATFORM_USB_USE_USB1 TRUE
+#define SN32_HAS_USB TRUE
+#define SN32_USB_USE_USB1 TRUE
 
 /*
  * System Clock settings.
