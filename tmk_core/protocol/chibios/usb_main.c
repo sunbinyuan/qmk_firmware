@@ -708,7 +708,7 @@ static bool usb_request_hook_cb(USBDriver *usbp) {
                         break;
 
                     case HID_SET_IDLE:
-                        keyboard_idle = usbp->setup[3]; /* MSB(wValue) */
+                        //keyboard_idle = usbp->setup[3]; /* MSB(wValue) */
                                                         /* arm the timer */
 #ifdef NKRO_ENABLE
                         if (!keymap_config.nkro && keyboard_idle) {
