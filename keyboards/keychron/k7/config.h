@@ -1,4 +1,6 @@
-/* Copyright 2022 Dimitris Mantzouranis <d3xter93@gmail.com>
+/* Copyright 2020 Adam Honse <calcprogrammer1@gmail.com>
+ * Copyright 2020 Dimitris Mantzouranis <d3xter93@gmail.com>
+ * Copyright 2021 Harrison Chan (Xelus)
  * Copyright 2022 Pablo Ramirez <jp.ramangulo@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,14 +19,4 @@
 
 #pragma once
 
-#include "quantum.h"
-
-#if defined(KEYBOARD_keychron_k7_rgb_ansi)
-    #include "ansi.h"
-#elif defined(KEYBOARD_keychron_k7_rgb_iso)
-    #include "iso.h"
-#elif defined(KEYBOARD_keychron_k7_rgb_optical_ansi)
-    #include "optical_ansi.h"
-#elif defined(KEYBOARD_keychron_k7_rgb_optical_iso)
-    #include "optical_iso.h"
-#endif
+#include "config_common.h"
