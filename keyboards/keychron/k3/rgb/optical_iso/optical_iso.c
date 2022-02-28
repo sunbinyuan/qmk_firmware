@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "iso.h"
+#include "optical_iso.h"
 
 #define XX NO_LED
 
