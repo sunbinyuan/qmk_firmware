@@ -18,7 +18,7 @@ NKRO_ENABLE             = yes # USB Nkey Rollover
 AUDIO_ENABLE            = no
 RGBLIGHT_ENABLE         = no
 SERIAL_LINK_ENABLE      = no
-WAIT_FOR_USB            = yes
+WAIT_FOR_USB            = no
 CUSTOM_MATRIX           = yes
 DIP_SWITCH_ENABLE       = yes
 KEYBOARD_SHARED_EP      = yes
@@ -31,4 +31,4 @@ RGB_MATRIX_DRIVER = SN32F24xB
 SRC = ../../../drivers/led/sn32/matrix_sn32f24xx.c
 
 # Build ansi by default
-DEFAULT_FOLDER = keychron/k7/rgb/optical_ansi
+DEFAULT_FOLDER = keychron/k7/rgb/ansi
