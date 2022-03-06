@@ -1,4 +1,4 @@
-/* Copyright 2021 IsaacDynamo
+/* Copyright 2022 Dimitris Mantzouranis <d3xter93@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,21 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "white.h"
 
-void suspend_power_down_kb(void) {
-    // Suspend backlight
-    led_matrix_set_suspend_state(true);
+#pragma once
 
-    suspend_power_down_user();
-}
-
-/// TODO: Clean-up workaround
-/// Currently the suspend_wakeup_init_kb() has issues. See https://github.com/SonixQMK/qmk_firmware/issues/80
-/// A workaround is to use housekeeping_task_kb() instead.
-void housekeeping_task_kb(void) {
-    // Restore backlight
-    led_matrix_set_suspend_state(false);
-
-    housekeeping_task_user();
-}
+/* Enable RGB Matrix */
+#define VIA_QMK_RGBLIGHT_ENABLE

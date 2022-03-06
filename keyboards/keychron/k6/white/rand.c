@@ -1,6 +1,6 @@
 // Small rand() implementation
 //
-// The libc rand implementation takes to much flash space, so an smaller rand() function is used. 
+// The libc rand implementation takes too much flash space, so an smaller rand() function is used. 
 #include "quantum.h"
 
 int rand(void)

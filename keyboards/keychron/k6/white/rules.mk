@@ -1,6 +1,8 @@
 # project specific files
+# SRC = ../../../drivers/led/sn32/led_matrix_sn32f26x.c
+# :sus: this is the same as in the C2:
+SRC = ../../../drivers/led/sn32/matrix_sn32f24xx.c
 SRC += rand.c
-SRC += config_led.c
 
 # MCU name
 MCU = SN32F268F
@@ -17,8 +19,8 @@ DIP_SWITCH_ENABLE = yes
 
 # Custom Key and LED matrix handling
 CUSTOM_MATRIX = yes
-RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_DRIVER = SN32F26x
+LED_MATRIX_ENABLE = yes
+LED_MATRIX_DRIVER = SN32F26x
 
 # process stack size of 0x1c0 crashes during SEND_STRING
 USE_EXCEPTIONS_STACKSIZE = 0x180
@@ -27,3 +29,5 @@ USE_PROCESS_STACKSIZE = 0x210
 # Reduce code size
 USE_PROCESS_STACKSIZE = 0x1E0
 USE_EXCEPTIONS_STACKSIZE = 0xF0
+
+DEFAULT_FOLDER = keychron/k6/white/ansi
