@@ -57,7 +57,9 @@
 #define RGB_DISABLE_WHEN_USB_SUSPENDED true
 
 /* Memory Optimizations  */
-#define DYNAMIC_KEYMAP_LAYER_COUNT 2
+#define DYNAMIC_KEYMAP_LAYER_COUNT 4
+#define LAYER_STATE_8BIT
+#define DYNAMIC_KEYMAP_EEPROM_MAX_ADDR 1200
 
 /* RGB Non-Reactive Effects */
 #define ENABLE_RGB_MATRIX_ALPHAS_MODS
