@@ -1,16 +1,16 @@
-# Keychron C1 RGB
+# Keychron C2 RGB
 
-![Keychron C1](https://i.imgur.com/oB9h56v.png)
+![Keychron C2](https://i.imgur.com/QtV3Kk3.jpg)
 
 A customizable TKL keyboard.
 
-* Keyboard Maintainer(s): [SonixQMK](https://github.com/SonixQMK), [IsaacDynamo](https://github.com/IsaacDynamo), [noldevin](https://github.com/noldevin), [vjdato21](https://github.com/vjdato21)
-* Hardware Supported: Keychron C1 RGB
-* Hardware Availability: [Keychron](https://www.keychron.com/products/keychron-c1-wired-mechanical-keyboard)
+* Keyboard Maintainer(s): [SonixQMK](https://github.com/SonixQMK), [IsaacDynamo](https://github.com/IsaacDynamo), [noldevin](https://github.com/noldevin), [vjdato21](https://github.com/vjdato21), [aaronsb](https://github.com/aaronsb)
+* Hardware Supported: Keychron C2 RGB
+* Hardware Availability: [Keychron](https://www.keychron.com/products/keychron-c2-wired-mechanical-keyboard)
 
 Make example for this keyboard (after setting up your build environment):
 
-    make keychron/c1/rgb:default | make keychron/c1/rgb:via
+    make keychron/c2/rgb:default | make keychron/c2/rgb:via
 
 ## How to Flash
 Flashing example for this keyboard:
