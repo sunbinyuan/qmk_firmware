@@ -56,6 +56,9 @@
 /* Disable RGB while USB is sleeping */
 #define RGB_DISABLE_WHEN_USB_SUSPENDED true
 
+/* Enable NKRO by default */
+#define FORCE_NKRO
+
 /* Memory Optimizations  */
 #define DYNAMIC_KEYMAP_LAYER_COUNT 4
 #define LAYER_STATE_8BIT
