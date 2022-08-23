@@ -1,5 +1,6 @@
 /*
 Copyright 2021 Dimitris Mantzouranis
+Copyright 2022 Aaron Bockelie
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -46,7 +47,13 @@ void keyboard_pre_init_kb(void) {
     // Setup Win & Mac LED Pins as output
     setPinOutput(LED_WIN_PIN);
     setPinOutput(LED_MAC_PIN);
-
+    writePinLow(LED_WIN_PIN);
+    writePinLow(LED_MAC_PIN);
+    
+    // Set status leds pins
+    setPinOutput(LED_NUM_LOCK_PIN);
+    setPinOutput(LED_CAPS_LOCK_PIN);
+    
     keyboard_pre_init_user();
 }
 
@@ -61,16 +68,3 @@ void suspend_power_down_kb(void) {
     suspend_power_down_user();
 }
 
-/// TODO: Clean-up workaround
-/// Currently the suspend_wakeup_init_user() has issues. See https://github.com/SonixQMK/qmk_firmware/issues/80
-/// A workaround is to use housekeeping_task_user() instead.
-void housekeeping_task_kb(void) {
-    // Turn on
-    mode_leds_show = true;
-    mode_leds_update();
-
-    // Turn on RGB
-    rgb_matrix_set_suspend_state(false);
-
-    housekeeping_task_user();
-}
