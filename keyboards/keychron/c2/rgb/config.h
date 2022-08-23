@@ -20,33 +20,34 @@
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID           0x3434
-#define PRODUCT_ID          0xFE20
+#define VENDOR_ID           0x05AC
+#define PRODUCT_ID          0x024F
 #define DEVICE_VER          0x0001
 
 #define MANUFACTURER        Keychron
-#define PRODUCT             Keychron \x43\x31
-#define DESCRIPTION         \x43\x31 RGB Hotswap
+#define PRODUCT             \x43\x32 RGB
+#define DESCRIPTION         \x43\x32 RGB QMK
 
 /* key matrix size */
 #define MATRIX_ROWS         6
-#define MATRIX_COLS         17
+#define MATRIX_COLS         21
 
-#define DIODE_DIRECTION COL2ROW
+#define DIODE_DIRECTION ROW2COL
 
-#define MATRIX_COL_PINS     { A8, A9, A10, A11, A12, A13, A14, A15, B0, B1, B2, B3, B4, B5, B6, B7, B8 }
+#define MATRIX_COL_PINS     { A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, B0, B1, B2, B3, B4, B5 }
 #define MATRIX_ROW_PINS     { C15, D11, D10, D9, D8, D7 }
 
 // Connects each switch in the dip switch to the GPIO pin of the MCU
-#define DIP_SWITCH_PINS     { D4 }
+#define DIP_SWITCH_PINS     { D6 }
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE            0
 
 /* LED Status indicators */
-#define LED_CAPS_LOCK_PIN   B10
-#define LED_MAC_PIN         B11 //labeled Mac on KB since no Scroll Lock
-#define LED_WIN_PIN         B12 //labeled Windows on KB since no Numpad
+#define LED_NUM_LOCK_PIN    B14
+#define LED_CAPS_LOCK_PIN   B13
+#define LED_MAC_PIN         B15
+#define LED_WIN_PIN         B12
 #define LED_PIN_ON_STATE    1
 
 /* Polling Rate */
@@ -54,6 +55,9 @@
 
 /* Disable RGB while USB is sleeping */
 #define RGB_DISABLE_WHEN_USB_SUSPENDED true
+
+/* Memory Optimizations  */
+#define DYNAMIC_KEYMAP_LAYER_COUNT 2
 
 /* RGB Non-Reactive Effects */
 #define ENABLE_RGB_MATRIX_ALPHAS_MODS
