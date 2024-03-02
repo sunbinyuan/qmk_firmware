@@ -1,5 +1,5 @@
 {
-    "name": "Redragon K582 ANSI",
+    "name": "K582",
     "vendorId": "0x0C45",
     "productId": "0x5004",
     "menus": ["qmk_rgb_matrix"],
