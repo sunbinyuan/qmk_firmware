@@ -5,13 +5,13 @@ permissions:
 
 on:
   push:
-    branches: [master, develop]
+    branches: [master, develop, sn32_develop]
   workflow_dispatch:
     inputs:
       branch:
         type: choice
         description: 'Branch to build'
-        options: [master, develop]
+        options: [master, develop, sn32_develop]
 
 concurrency: ci_build-${{ github.event.inputs.branch || github.ref_name }}
 
