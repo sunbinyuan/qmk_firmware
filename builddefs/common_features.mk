@@ -233,9 +233,6 @@ else
         # Teensy EEPROM implementations
         OPT_DEFS += -DEEPROM_KINETIS_FLEXRAM
         SRC += eeprom_kinetis_flexram.c
-      else ifneq ($(filter $(MCU_SERIES),SN32F240B SN32F260),)
-        OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_SN32_FLASH_EMULATED
-        SRC += eeprom_driver.c eeprom_sn32.c
       else
         # Fall back to transient, i.e. non-persistent
         OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_TRANSIENT
@@ -253,7 +250,7 @@ else
   endif
 endif
 
-VALID_WEAR_LEVELING_DRIVER_TYPES := custom embedded_flash spi_flash rp2040_flash legacy sn32_flash
+VALID_WEAR_LEVELING_DRIVER_TYPES := custom embedded_flash spi_flash rp2040_flash legacy
 WEAR_LEVELING_DRIVER ?= none
 ifneq ($(strip $(WEAR_LEVELING_DRIVER)),none)
   ifeq ($(filter $(WEAR_LEVELING_DRIVER),$(VALID_WEAR_LEVELING_DRIVER_TYPES)),)
@@ -281,9 +278,6 @@ ifneq ($(strip $(WEAR_LEVELING_DRIVER)),none)
       COMMON_VPATH += $(PLATFORM_PATH)/$(PLATFORM_KEY)/$(DRIVER_DIR)/flash
       SRC += legacy_flash_ops.c wear_leveling_legacy.c
       POST_CONFIG_H += $(PLATFORM_PATH)/$(PLATFORM_KEY)/$(DRIVER_DIR)/wear_leveling/wear_leveling_legacy_config.h
-    else ifeq ($(strip $(WEAR_LEVELING_DRIVER)), sn32_flash)
-      SRC += wear_leveling_sn32_flash.c
-      POST_CONFIG_H += $(PLATFORM_PATH)/$(PLATFORM_KEY)/$(DRIVER_DIR)/wear_leveling/wear_leveling_sn32_flash_config.h
     endif
   endif
 endif
