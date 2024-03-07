@@ -38,6 +38,8 @@
 #                error "ChibiOS hasn't defined STM32_FLASH_LINE_SIZE, and could not automatically determine BACKING_STORE_WRITE_SIZE" // normally defined in stm32_registry.h, should be set by STM32_FLASH_LINE_SIZE
 #            endif
 #        endif
+#    elif defined(QMK_MCU_FAMILY_SN32)
+#        define BACKING_STORE_WRITE_SIZE 4 // from sn32_registry.h
 #    else
 #        error "Could not automatically determine BACKING_STORE_WRITE_SIZE"
 #    endif
